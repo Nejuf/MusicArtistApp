@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			self.current_user = @user
-			flash_notice_now "Successfully Signed up"
+			flash_notice ["Successfully Signed up"]
 			redirect_to user_url(@user)
 		else
 			flash_errors_now @user

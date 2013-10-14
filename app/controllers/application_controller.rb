@@ -9,10 +9,17 @@ include SessionsHelper
   	flash.now[:notices] ||= []
   	flash.now[:notices] << message.to_s
   end
+  def flash_notice(messages)
+    flash.now[:notices] = messages
+  end
 
   def flash_errors_now(object)
   	flash.now[:errors] ||= []
   	flash.now[:errors] << object.full_messages.to_sentences
+  end
+
+  def flash_errors(object)
+    flash.now[:errors] = [object.full_messages.to_sentences]
   end
 
 end
