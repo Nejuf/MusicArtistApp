@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates :session_token, presence: true
 	validates :password_digest, presence: true
 
-	after_initialize :ensure_session_token
+	 after_initialize :ensure_session_token
 
 	def password=(pass)
 		self.password_digest = BCrypt::Password.create(pass).to_s
@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
 
 	def self.find_by_credentials(email, pass)
 		u = User.find_by(email: email)
-		u.is_password?(pass) ? u : nil
+		return nil if u.nil? || !u.is_password?(pass)
+		u
 	end
 
 	private
