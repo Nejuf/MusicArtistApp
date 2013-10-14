@@ -46,6 +46,8 @@ gem 'debugger', group: [:development, :test]
 
 gem "figaro"
 
+gem 'protected_attributes'
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
