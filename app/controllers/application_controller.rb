@@ -15,11 +15,11 @@ include SessionsHelper
 
   def flash_errors_now(object)
   	flash.now[:errors] ||= []
-  	flash.now[:errors] << object.full_messages.to_sentences
+  	flash.now[:errors] << object.full_messages
   end
 
   def flash_errors(object)
-    flash.now[:errors] = [object.full_messages.to_sentences]
+    flash.now[:errors] = [object.full_messages]
   end
 
 end

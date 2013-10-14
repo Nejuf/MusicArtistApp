@@ -1,0 +1,11 @@
+<% albums ||= [album] %>
+
+<table>
+	<% albums.each do |a| %>
+		<tr>
+			<td><%= link_to a.name, album_url(a) %></td>
+			<td>Type: <%= a.type %></td>
+			<td><%= button_to "Edit", edit_album_url(a), method: :get %></td>
+		</tr>
+	<% end %>
+</table>

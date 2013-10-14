@@ -1,0 +1,23 @@
+<h1>Add Album</h1>
+<form action="<%= band_albums_url %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="album_name">Name:</label>
+	<input id="album_name" type="text" name="album[name]" value="<%= @album.name %>" placeholder="name">
+<br>
+	<label for="album_band_id">Band:</label>
+	<select id="album_band_id" name="album[band_id]">
+		<% Band.all.each do |band| %>
+		<% checked = "selected".html_safe if band.id.to_s == params[:band_id].to_s %>
+			<option value="<%= band.id %>" <%= checked %> ><%= band.name %></option>
+		<% end %>
+	</select>
+<br>
+	<label for="album_type">Type:</label>
+	<label for="album_type_studio">Studio</label>
+	<input id="album_type_studio" type="radio" name="album[type]" value="studio" checked>
+	<label for="album_type_live">Live</label>
+	<input id="album_type_live" type="radio" name="album[type]" value="live">
+	<br>
+	<input type="submit" value="Submit Changes">
+</form>

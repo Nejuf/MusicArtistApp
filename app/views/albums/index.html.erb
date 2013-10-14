@@ -1,0 +1,3 @@
+<h1><%= Band.find(params[:band_id]).name %> Discography</h1>
+<%= link_to "New Album", new_band_album_url %>
+<%= render "display", albums: @albums %>
