@@ -23,8 +23,9 @@
 	<input id="track_track_length" type="text" name="track[track_length]" value="<%= @track.track_length %>" >
 	<p>
 		<label for="track_lyrics">Lyrics:</label>
-		<input id="track_lyrics" type="textarea" name="track[lyrics]" value="<%= @track.lyrics %>">
+		<!-- <input id="track_lyrics" type="textarea" name="track[lyrics]" value="<%= @track.lyrics %>"> -->
+		<textarea id="track_lyrics" name="track[lyrics]"><%= @track.lyrics %></textarea>
 	</p>
 	<br>
-	<input type="submit" value="Submit Changes">
+	<input type="submit" value="Submit">
 </form>

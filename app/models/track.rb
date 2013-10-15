@@ -7,4 +7,7 @@ class Track < ActiveRecord::Base
 	validates :album_id, presence: true
 	
 	belongs_to :album
+	def band
+		album.band
+	end
 end

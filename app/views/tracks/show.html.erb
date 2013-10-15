@@ -1,2 +1,4 @@
 <h1>Track Profile</h1>
-<%= render "display", track: @track %>
+<%= render "display", track: @track, display_list: [:name, :type, :track_length, :album, :band] %>
+<h2>Lyrics</h2>
+<%= @track.lyrics %>

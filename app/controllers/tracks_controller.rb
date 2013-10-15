@@ -25,7 +25,7 @@ class TracksController < ApplicationController
 	end
 
 	def edit
-		@track = Track.new(params[:track])
+		@track = Track.find(params[:id])
 	end
 
 	def update

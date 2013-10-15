@@ -1,2 +1,5 @@
-<h1>Band Profile</h1>
-<%= render "display", band: @band %>
+<h1><%= @band.name %></h1>
+<%#= render "display", band: @band %>
+<h2>Albums</h2>
+<%= render "albums/display", albums: @band.albums %>
+<%= button_to "Add Album", new_band_album_url(@band), method: "get" %>

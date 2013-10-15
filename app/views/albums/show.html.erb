@@ -1,5 +1,7 @@
-<h1>Album Profile</h1>
-<%= render "display", album: @album %>
-<h2>Tracks:</h2>
+<h1><%= @album.name %></h1>
+<h2>By: <%= link_to @album.band.name, band_url(@album.band) %></h2>
+<h3>Track list:</h3>
+<div>
+	<%= render "tracks/display", tracks: @album.tracks %>
+</div>
 <%= button_to "Add Track", new_album_track_url(@album), method: "get" %>
-<%= render "tracks/display", tracks: @album.tracks %>

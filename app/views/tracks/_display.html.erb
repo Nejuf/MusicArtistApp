@@ -1,21 +1,35 @@
 <% tracks ||= [track] %>
-<% lyric_max = 30 %>
-
+<% lyric_max ||= 30 %>
+<% display_list ||= [:name, :type, :track_length, :album, :band, :lyrics] %>
 <table>
 	<tr>
-		<td>Name:</td>
-		<td>Type:</td>
-		<td>Length:</td>
-		<td>From:</td>
-		<td>Lyrics: </td>
+		<% if display_list.include?(:name) %><td>Name:</td><% end %>
+		<% if display_list.include?(:type) %><td>Type:</td><% end %>
+		<% if display_list.include?(:track_length) %><td>Length:</td><% end %>
+		<% if display_list.include?(:album) %><td>From:</td><% end %>
+		<% if display_list.include?(:band) %><td>By:</td><% end %>
+		<% if display_list.include?(:lyrics) %><td>Lyrics: </td><% end %>
 	</tr>
 	<% tracks.each do |a| %>
 		<tr>
+		<% if display_list.include?(:name) %>
 			<td><%= link_to a.name, track_url(a) %></td>
+		<% end %>
+		<% if display_list.include?(:type) %>
 			<td><%= a.type %></td>
+		<% end %>
+		<% if display_list.include?(:track_length) %>
 			<td><%= a.track_length %></td>
+		<% end %>
+		<% if display_list.include?(:album) %>
 			<td><%= link_to a.album.name, album_url(a.album) %></td>
+		<% end %>
+		<% if display_list.include?(:band) %>
+			<td><%= link_to a.band.name, band_url(a.band) %></td>
+		<% end %>
+		<% if display_list.include?(:lyrics) %>
 			<td><%= a.lyrics[0..lyric_max] %><%= "..." if a.lyrics.length > lyric_max %></td>
+		<% end %>
 			<td><%= button_to "Edit", edit_track_url(a), method: :get %></td>
 			<td><%= button_to "Delete", track_url(a), method: :delete %></td>
 		</tr>
