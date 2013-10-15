@@ -5,7 +5,9 @@
 		<tr>
 			<td><%= link_to a.name, album_url(a) %></td>
 			<td>Type: <%= a.type %></td>
+			<td>By: <%= link_to a.band.name, band_url(a.band) %></td>
 			<td><%= button_to "Edit", edit_album_url(a), method: :get %></td>
+			<td><%= button_to "Delete", album_url(a), method: :delete %></td>
 		</tr>
 	<% end %>
 </table>

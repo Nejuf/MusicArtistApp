@@ -1,0 +1,23 @@
+<% tracks ||= [track] %>
+<% lyric_max = 30 %>
+
+<table>
+	<tr>
+		<td>Name:</td>
+		<td>Type:</td>
+		<td>Length:</td>
+		<td>From:</td>
+		<td>Lyrics: </td>
+	</tr>
+	<% tracks.each do |a| %>
+		<tr>
+			<td><%= link_to a.name, track_url(a) %></td>
+			<td><%= a.type %></td>
+			<td><%= a.track_length %></td>
+			<td><%= link_to a.album.name, album_url(a.album) %></td>
+			<td><%= a.lyrics[0..lyric_max] %><%= "..." if a.lyrics.length > lyric_max %></td>
+			<td><%= button_to "Edit", edit_track_url(a), method: :get %></td>
+			<td><%= button_to "Delete", track_url(a), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>

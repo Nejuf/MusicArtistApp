@@ -4,6 +4,7 @@
 	<% bands.each do |b| %>
 		<tr>
 			<td><%= link_to b.name, band_url(b) %></td>
+			<td><%= link_to "Albums", band_albums_url(b) %></td>
 		</tr>
 	<% end %>
 </table>

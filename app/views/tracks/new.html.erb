@@ -1,0 +1,30 @@
+<h1>Add Track</h1>
+<form action="<%= album_tracks_url %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	<label for="track_name">Name:</label>
+	<input id="track_name" type="text" name="track[name]" value="<%= @track.name %>" placeholder="name">
+<br>
+	<label for="track_album_id">Album:</label>
+	<select id="track_album_id" name="track[album_id]">
+		<% Album.all.each do |album| %>
+		<% checked = "selected".html_safe if album.id.to_s == params[:album_id].to_s %>
+			<option value="<%= album.id %>" <%= checked %> ><%= album.name %></option>
+		<% end %>
+	</select>
+<br>
+	<label for="track_type">Type:</label>
+	<label for="track_type_regular">Regular</label>
+	<input id="track_type_regular" type="radio" name="track[type]" value="regular" checked>
+	<label for="track_type_bonus">Bonus</label>
+	<input id="track_type_bonus" type="radio" name="track[type]" value="bonus">
+<br>
+	<label for="track_track_length">Length(seconds):</label>
+	<input id="track_track_length" type="text" name="track[track_length]" value="<%= @track.track_length %>" >
+	<p>
+		<label for="track_lyrics">Lyrics:</label>
+		<input id="track_lyrics" type="textarea" name="track[lyrics]" value="<%= @track.lyrics %>">
+	</p>
+	<br>
+	<input type="submit" value="Submit Changes">
+</form>
